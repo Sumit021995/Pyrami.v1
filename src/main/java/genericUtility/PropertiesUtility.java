@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class PropertiesUtility {
 	/**
-	 * 
+	 * This is a generic method to get String type data from properties file based on relevant key.
 	 * @param key
 	 * @return
 	 * @throws IOException
