@@ -3,7 +3,6 @@ package samplePracticePackage;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -110,17 +109,23 @@ public class Test_Contacts_001 {
 		String comfirmationText = driver.findElement(By.xpath("//span[@class='dvHeaderText']")).getText();
 		String contactFirstNamecomfirmationText = driver.findElement(By.id("dtlview_First Name")).getText();
 		String contactLastNamecomfirmationText = driver.findElement(By.id("dtlview_Last Name")).getText();
-		String industryConfirmationText = driver.findElement(By.id("dtlview_Industry")).getText();
-		String typeConfirmationText = driver.findElement(By.id("dtlview_Type")).getText();
-		String ratingConfirmationText = driver.findElement(By.id("dtlview_Rating")).getText();
-		String memberOfConfirmationText = driver.findElement(By.id("mouseArea_Member Of")).getText();
+		String titleDropdownConfirmationTest = driver.findElement(By.id("mouseArea_First Name")).getText();
+		String emailConfirmationTest = driver.findElement(By.id("dtlview_Email")).getText();
+//		String leadSourceDropdownConfirmationTest = driver.findElement(By.id("mouseArea_First Name")).getText();
+//		String industryConfirmationText = driver.findElement(By.id("dtlview_Industry")).getText();
+//		String typeConfirmationText = driver.findElement(By.id("dtlview_Type")).getText();
+//		String ratingConfirmationText = driver.findElement(By.id("dtlview_Rating")).getText();
+//		String memberOfConfirmationText = driver.findElement(By.id("mouseArea_Member Of")).getText();
 		Assert.assertEquals(comfirmationText.contains(contactFirstName1), true);
 		Assert.assertEquals(comfirmationText.contains(contactLastName1), true);
 		Assert.assertTrue(contactFirstNamecomfirmationText.equals(contactFirstName1));
-		Assert.assertTrue(contactFirstNamecomfirmationText.equals(contactFirstName1));
-		Assert.assertEquals(typeConfirmationText.contains(type3), true);
-		Assert.assertEquals(ratingConfirmationText.contains(rating3), true);
-		Assert.assertTrue(memberOfConfirmationText.contains(memberOf));
+		Assert.assertTrue(contactLastNamecomfirmationText.equals(contactLastName1));
+		Assert.assertTrue(titleDropdownConfirmationTest.contains("Mr."));
+		Assert.assertTrue(emailConfirmationTest.equals(email1));
+//		Assert.assertTrue(leadSourceDropdownConfirmationTest.equals());
+//		Assert.assertEquals(typeConfirmationText.contains(type3), true);
+//		Assert.assertEquals(ratingConfirmationText.contains(rating3), true);
+//		Assert.assertTrue(memberOfConfirmationText.contains(memberOf));
 		System.out.println("All Organization details Validated True");
 		
 		//================== Logout From The Application with the help of Actions class ========================//
