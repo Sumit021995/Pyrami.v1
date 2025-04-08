@@ -28,8 +28,9 @@ public class PropertiesUtility {
 	}
 	public static void main(String[] args) throws IOException {
 		WebDriver driver;
-		System.out.println("Enter a browser name ");
-		String browser = new Scanner(System.in).next();
+//		System.out.println("Enter a browser name ");
+//		String browser = new Scanner(System.in).next();
+		String browser = System.getProperty("browser");
 		
 		if(browser.equalsIgnoreCase("chrome"))
 			driver = new ChromeDriver();
@@ -48,14 +49,17 @@ public class PropertiesUtility {
 		 * System.out.println(new
 		 * PropertiesUtility().getDataFromPropertiesFile("password"));
 		 */
-		PropertiesUtility pUtil = new PropertiesUtility();
-		String url = pUtil.getDataFromPropertiesFile("url");
-		String UN = pUtil.getDataFromPropertiesFile("username");
-		String PWD = pUtil.getDataFromPropertiesFile("password");
+		String url = System.getProperty("url");
+		String username = System.getProperty("username");
+		String password = System.getProperty("password");
+//		PropertiesUtility pUtil = new PropertiesUtility();
+//		String url = pUtil.getDataFromPropertiesFile("url");
+//		String UN = pUtil.getDataFromPropertiesFile("username");
+//		String PWD = pUtil.getDataFromPropertiesFile("password");
 		driver.get(url);
 		
-		driver.findElement(By.name("user_name")).sendKeys(UN);
-		driver.findElement(By.name("user_password")).sendKeys(UN);
+		driver.findElement(By.name("user_name")).sendKeys(username);
+		driver.findElement(By.name("user_password")).sendKeys(password);
 		driver.findElement(By.id("submitButton")).click();
 		
 		//teardown
