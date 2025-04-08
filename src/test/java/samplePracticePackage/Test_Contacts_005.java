@@ -1,7 +1,10 @@
 package samplePracticePackage;
 
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Workbook;
@@ -18,9 +21,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Test_Contacts_001 {
+public class Test_Contacts_005 {
 	@Test
-	public  void contacts_001() throws Exception{
+	public  void contacts_005() throws Exception{
 		
 		Select s;
 		WebDriver driver=null;
@@ -59,49 +62,46 @@ public class Test_Contacts_001 {
 		//================== Fetch Data from Excel File ========================//
 		FileInputStream excelFile = new FileInputStream(".\\src\\test\\resources\\TestData\\TestExcel.xlsx");
 		Workbook wb = WorkbookFactory.create(excelFile);
-		String contactFirstName1 = wb.getSheet("Contacts").getRow(2).getCell(1).toString();
-		String contactLastName1 = wb.getSheet("Contacts").getRow(2).getCell(2).toString();
-		String mobile1 = (long)wb.getSheet("Contacts").getRow(2).getCell(3).getNumericCellValue()+"";
-		String email1 = wb.getSheet("Contacts").getRow(2).getCell(4).toString();
+		String contactFirstName5 = wb.getSheet("Contacts").getRow(14).getCell(1).toString();
+		String contactLastName5 = wb.getSheet("Contacts").getRow(14).getCell(2).toString();
+		String mobile5 = (long)wb.getSheet("Contacts").getRow(14).getCell(3).getNumericCellValue()+"";
+		String email5 = "a"+(int)Math.floor(Math.random()*1000)+wb.getSheet("Contacts").getRow(14).getCell(4).toString();
+		String leadSourceDropdownValue5 = wb.getSheet("Contacts").getRow(14).getCell(5).toString();
+		String birthDateValue5 = wb.getSheet("Contacts").getRow(14).getCell(6).toString();
+		
 		
 		WebElement titleDropdown = driver.findElement(By.name("salutationtype"));
 		s=new Select(titleDropdown);
 		s.selectByIndex(1);
 		
-		driver.findElement(By.name("firstname")).sendKeys(contactFirstName1,Keys.TAB,Keys.TAB,contactLastName1);
-		driver.findElement(By.id("mobile")).sendKeys(mobile1);
-		driver.findElement(By.id("email")).sendKeys(email1);
+		driver.findElement(By.name("firstname")).sendKeys(contactFirstName5,Keys.TAB,Keys.TAB,contactLastName5);
+		driver.findElement(By.id("mobile")).sendKeys(mobile5);
+		driver.findElement(By.id("email")).sendKeys(email5);
+		driver.findElement(By.id("jscal_field_birthday")).sendKeys(birthDateValue5);
+		
+		
 		
 //		//================== Use of Select class for Dropdown handling  ========================//
-//		WebElement industryDropdownEle = driver.findElement(By.name("industry"));
-//		s = new Select(industryDropdownEle);
-//		s.selectByValue(industry3);
+		WebElement leadSourceDropdownEle = driver.findElement(By.name("leadsource"));
+		s = new Select(leadSourceDropdownEle);
+		s.selectByValue(leadSourceDropdownValue5);
 //		WebElement typeDropdownEle = driver.findElement(By.name("accounttype"));
 //		s = new Select(typeDropdownEle);
-//		s.selectByValue(type3);
+//		s.selectByValue(type5);
 //		WebElement ratingDropdownEle = driver.findElement(By.name("rating"));
 //		s = new Select(ratingDropdownEle);
-//		s.selectByValue(rating3);
-//		
-//		//================== New Window handling  ========================//
-//		String parentWindowId = driver.getWindowHandle();
-//		driver.findElement(By.xpath("//img[@title='Select']")).click();
-//		Set<String> allWindowIds = driver.getWindowHandles();
-//		
-//		for(String id:allWindowIds)
-//		{
-//			if(!id.equals(parentWindowId)) {
-//				driver.switchTo().window(id);
-//				break;
-//			}
-//		}
-//		
-//		driver.findElement(By.id("search_txt")).sendKeys(memberOf);
-//		driver.findElement(By.name("search")).click();
-//		driver.findElement(By.id("1")).click();
-//		driver.switchTo().alert().accept();
-//		
-//		driver.switchTo().window(parentWindowId);
+//		s.selectByValue(rating5);
+		
+		//========================== Calendar Element Handling ===================================//
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+		String currentDate = sdf.format(new Date());
+		cal.add(Calendar.DAY_OF_MONTH, 30);
+		String CurrentDatePlus30 = sdf.format(cal.getTime());
+		
+		WebElement startDate = driver.findElement(By.id("jscal_field_support_end_date"));
+		startDate.clear();
+		startDate.sendKeys(CurrentDatePlus30);
 		
 		driver.findElement(By.xpath("//input[@class='crmButton small save']")).click();
 		
@@ -111,20 +111,27 @@ public class Test_Contacts_001 {
 		String contactLastNamecomfirmationText = driver.findElement(By.id("dtlview_Last Name")).getText();
 		String titleDropdownConfirmationTest = driver.findElement(By.id("mouseArea_First Name")).getText();
 		String emailConfirmationTest = driver.findElement(By.id("dtlview_Email")).getText();
+		String leadSourceConfirmationTest = driver.findElement(By.id("dtlview_Lead Source")).getText();
+		String birthdayConfirmationTest = driver.findElement(By.id("dtlview_Birthdate")).getText();
+		String endDateConfirmationTest = driver.findElement(By.id("dtlview_Support End Date")).getText();
+//		String orgConfirmationText = driver.findElement(By.xpath("//a[text()='"+org2+"']")).getText();
 //		String leadSourceDropdownConfirmationTest = driver.findElement(By.id("mouseArea_First Name")).getText();
 //		String industryConfirmationText = driver.findElement(By.id("dtlview_Industry")).getText();
 //		String typeConfirmationText = driver.findElement(By.id("dtlview_Type")).getText();
 //		String ratingConfirmationText = driver.findElement(By.id("dtlview_Rating")).getText();
-//		String memberOfConfirmationText = driver.findElement(By.id("mouseArea_Member Of")).getText();
-		Assert.assertEquals(comfirmationText.contains(contactFirstName1), true);
-		Assert.assertEquals(comfirmationText.contains(contactLastName1), true);
-		Assert.assertTrue(contactFirstNamecomfirmationText.equals(contactFirstName1));
-		Assert.assertTrue(contactLastNamecomfirmationText.equals(contactLastName1));
+		Assert.assertEquals(comfirmationText.contains(contactFirstName5), true);
+		Assert.assertEquals(comfirmationText.contains(contactLastName5), true);
+		Assert.assertTrue(contactFirstNamecomfirmationText.equals(contactFirstName5));
+		Assert.assertTrue(contactLastNamecomfirmationText.equals(contactLastName5));
 		Assert.assertTrue(titleDropdownConfirmationTest.contains("Mr."));
-		Assert.assertTrue(emailConfirmationTest.equals(email1));
+		Assert.assertTrue(emailConfirmationTest.equals(email5));
+		Assert.assertTrue(leadSourceConfirmationTest.equals(leadSourceDropdownValue5));
+		Assert.assertTrue(birthdayConfirmationTest.equals(birthDateValue5));
+		Assert.assertTrue(endDateConfirmationTest.equals(CurrentDatePlus30));
+//		Assert.assertTrue(orgConfirmationText.equals(org2));
 //		Assert.assertTrue(leadSourceDropdownConfirmationTest.equals());
-//		Assert.assertEquals(typeConfirmationText.contains(type3), true);
-//		Assert.assertEquals(ratingConfirmationText.contains(rating3), true);
+//		Assert.assertEquals(typeConfirmationText.contains(type5), true);
+//		Assert.assertEquals(ratingConfirmationText.contains(rating5), true);
 //		Assert.assertTrue(memberOfConfirmationText.contains(memberOf));
 		System.out.println("All Organization details Validated True");
 		
@@ -139,6 +146,10 @@ public class Test_Contacts_001 {
 		
 	}
 }
+
+
+
+
 
 
 

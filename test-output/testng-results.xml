@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-08T12:55:02 IST" name="Default suite" finished-at="2025-04-08T12:55:47 IST" duration-ms="44873">
+  <suite started-at="2025-04-08T15:55:13 IST" name="Default suite" finished-at="2025-04-08T15:56:15 IST" duration-ms="62457">
     <groups>
     </groups>
-    <test started-at="2025-04-08T12:55:02 IST" name="Default test" finished-at="2025-04-08T12:55:47 IST" duration-ms="44873">
-      <class name="samplePracticePackage.Test_Contacts_001">
-        <test-method signature="contacts_001()[pri:0, instance:samplePracticePackage.Test_Contacts_001@72057ecf]" started-at="2025-04-08T12:55:02 IST" name="contacts_001" finished-at="2025-04-08T12:55:47 IST" duration-ms="44778" status="PASS">
+    <test started-at="2025-04-08T15:55:13 IST" name="Default test" finished-at="2025-04-08T15:56:15 IST" duration-ms="62457">
+      <class name="samplePracticePackage.Test_Contacts_002">
+        <test-method signature="contacts_002()[pri:0, instance:samplePracticePackage.Test_Contacts_002@72057ecf]" started-at="2025-04-08T15:55:13 IST" name="contacts_002" finished-at="2025-04-08T15:56:15 IST" duration-ms="62341" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- contacts_001 -->
-      </class> <!-- samplePracticePackage.Test_Contacts_001 -->
+        </test-method> <!-- contacts_002 -->
+      </class> <!-- samplePracticePackage.Test_Contacts_002 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -1,3 +1,0 @@
-String data = new String(Files.readAllBytes(Paths.get("AbsolutePath")));
-JSONObject jObj = new JSONObject(data);
-jObj.getString(key);
