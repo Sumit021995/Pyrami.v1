@@ -18,6 +18,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import genericUtility.IPathUtility;
+
 public class Test_Org_002 {
 	@Test
 	public  void org_002() throws Exception{
@@ -25,7 +27,7 @@ public class Test_Org_002 {
 		WebDriver driver=null;
 		
 		//================== Fetching Data from properties File ========================//
-		FileInputStream propertiesFile = new FileInputStream(".\\src\\test\\resources\\TestData\\vtigerCommonData.properties");
+		FileInputStream propertiesFile = new FileInputStream(IPathUtility.propertiesFile);
 		Properties prop = new Properties();
 		prop.load(propertiesFile);
 		String url = prop.getProperty("url");
