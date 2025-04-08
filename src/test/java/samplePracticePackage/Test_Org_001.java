@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -30,17 +32,20 @@ public class Test_Org_001 {
 			driver = new FirefoxDriver();
 		else if(browser.equalsIgnoreCase("edge"))
 			driver = new EdgeDriver();
-		else 
-			driver = new FirefoxDriver();
+		else  driver = new FirefoxDriver();
 			
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
-		
+			
 		//================== Launching application ========================//
 		driver.get(url);
 		
-		//================== Launching application ========================//
+		//================== Login to  application ========================//
+		driver.findElement(By.name("user_name")).sendKeys(UN,Keys.TAB,PWD,Keys.ENTER);
 		
+		//================== Navigation to Organization module ========================//
+		driver.findElement(By.xpath("//table[@class='hdrTabBg']//a[text()='Organizations']")).click();
+		driver.findElement(By.xpath("\"//img[@title='Create Organization...']")).click();
+		driver.findElement(By.xpath("\"//img[@title='Create Organization...']")).click();
 	}
 }
