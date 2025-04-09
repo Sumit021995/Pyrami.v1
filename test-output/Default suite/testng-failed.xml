@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="samplePracticePackage.Test_Contacts_002">
+      <class name="com.crm.leads_Test.Test_Leads_002">
         <methods>
-          <include name="contacts_002"/>
+          <include name="leads_002"/>
         </methods>
-      </class> <!-- samplePracticePackage.Test_Contacts_002 -->
+      </class> <!-- com.crm.leads_Test.Test_Leads_002 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -59,7 +59,7 @@ public class Test_Org_003 {
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
 		
 		//================== Fetch Data from Excel File ========================//
-		FileInputStream excelFile = new FileInputStream(".\\src\\test\\resources\\TestData\\TestExcel.xlsx");
+		FileInputStream excelFile = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(excelFile);
 		String orgName3 = wb.getSheet("Organizations").getRow(8).getCell(1).toString()+Math.floor(Math.random()*1000);
 		String orgWebsite3 = wb.getSheet("Organizations").getRow(8).getCell(2).toString();

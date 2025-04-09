@@ -1,4 +1,4 @@
-package genericUtility;
+package com.vtiger.com.generic.excelUtility;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,12 +14,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import genericUtility.IPathUtility;
+
 public class ExcelUtility {
 
 	public String getDataFromExcelFile(String sheetName, int rowNum, int cellNum)
 			throws EncryptedDocumentException, IOException {
 		String value = "";
-		FileInputStream file = new FileInputStream(IPathUtility.excelFile);
+		FileInputStream file = new FileInputStream(IPathUtility .excelFile);
 		Workbook wb = WorkbookFactory.create(file);
 		try {
 			value = wb.getSheet(sheetName).getRow(rowNum).getCell(cellNum).toString();
@@ -105,22 +107,7 @@ public class ExcelUtility {
 		return excelDataList;
 	}
 
-	/**
-	 * 
-	 * @param sheetName
-	 * @param rowNum
-	 * @param cellNum
-	 * @return
-	 * @throws EncryptedDocumentException
-	 * @throws IOException
-	 *//*
-		 * public String getDataFromExcelFile(String sheetName , int rowNum , int
-		 * cellNum) throws EncryptedDocumentException, IOException { FileInputStream
-		 * file = new FileInputStream(IPathUtility.HrEmailsExcel); Workbook wb =
-		 * WorkbookFactory.create(file); DataFormatter data = new DataFormatter(); Cell
-		 * cell = wb.getSheet(sheetName).getRow(rowNum).getCell(cellNum); String value =
-		 * data.formatCellValue(cell); return value; }
-		 */
+
 	public void setDataInExcelFile(String sheetName,int rowNum,int CellNum,String data) throws EncryptedDocumentException, IOException
 	{
 		FileInputStream file = new FileInputStream(IPathUtility.excelFile);
@@ -130,6 +117,12 @@ public class ExcelUtility {
 		FileOutputStream fos = new FileOutputStream(IPathUtility.excelFile);
 		wb.write(fos);
 		wb.close();
+	}
+	public int getRowCount(String sheetName) throws EncryptedDocumentException, IOException
+	{
+		FileInputStream file = new FileInputStream(IPathUtility.excelFile);
+		Workbook wb = WorkbookFactory.create(file);
+		return wb.getSheet(sheetName).getLastRowNum();
 	}
 	public static void main(String[] args) throws Exception {
 		ExcelUtility excelUtility = new ExcelUtility();

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
@@ -59,9 +60,10 @@ public class Test_Org_001 {
 		//================== Fetch Data from Excel File ========================//
 		FileInputStream excelFile = new FileInputStream(".\\src\\test\\resources\\TestData\\TestExcel.xlsx");
 		Workbook wb = WorkbookFactory.create(excelFile);
-		String orgName1 = wb.getSheet("Organizations").getRow(2).getCell(1).toString()+Math.floor(Math.random()*1000);
-		String orgWebsite1 = wb.getSheet("Organizations").getRow(2).getCell(2).toString();
-		String orgPhone1 = (long)wb.getSheet("Organizations").getRow(2).getCell(3).getNumericCellValue()+"";
+		Row row = wb.getSheet("Organizations").getRow(2);
+		String orgName1 = row.getCell(1).toString()+Math.floor(Math.random()*1000);
+		String orgWebsite1 = row.getCell(2).toString();
+		String orgPhone1 = (long)row.getCell(3).getNumericCellValue()+"";
 		
 		driver.findElement(By.name("accountname")).sendKeys(orgName1,Keys.TAB,Keys.TAB,orgWebsite1,Keys.TAB,orgPhone1);
 		driver.findElement(By.name("button")).click();
