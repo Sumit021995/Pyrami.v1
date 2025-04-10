@@ -46,16 +46,7 @@ public class HomePage {
 	public WebElement getMoreOptionLink() {
 		return moreOptionLink;
 	}
-	/**
-	 * This is a business utility method to click on campaign link by hovering over to more link
-	 * @param driver
-	 */
-	public void clickOnCampaignFromMoreOption(WebDriver driver)
-	{
-		Actions act = new Actions(driver);
-		act.moveToElement(moreOptionLink).perform();
-		campaignsLink.click();
-	}
+	
 	/**
 	 * This a business utility method to select from QuickCreate Dropdown
 	 * @param valueOfQuickCreateDropdown
