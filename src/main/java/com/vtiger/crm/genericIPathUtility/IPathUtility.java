@@ -1,4 +1,4 @@
-package genericUtility;
+package com.vtiger.crm.genericIPathUtility;
 
 public interface IPathUtility {
 	final static String propertiesFile = ".\\src\\main\\resources\\configAppData\\configData.properties";

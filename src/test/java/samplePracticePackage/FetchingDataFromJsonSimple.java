@@ -8,7 +8,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class FetchingDataFromJsonSimple {
 	public static void main(String[] args) throws Exception {

@@ -1,11 +1,13 @@
-package com.vtiger.com.generic.fileUtility;
+package com.vtiger.crm.genericFileUtility;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.json.JSONObject;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class JSONUtility {
 	/**

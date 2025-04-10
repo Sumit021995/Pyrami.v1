@@ -18,7 +18,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class Test_Contacts_003 {
 	@Test

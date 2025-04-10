@@ -5,7 +5,9 @@ import java.nio.file.Paths;
 
 import org.json.JSONObject;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class FetchingDataFromJson {
 	public static void main(String[] args) throws Exception {

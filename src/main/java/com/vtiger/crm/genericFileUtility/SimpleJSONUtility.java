@@ -1,4 +1,4 @@
-package com.vtiger.com.generic.fileUtility;
+package com.vtiger.crm.genericFileUtility;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +7,9 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class SimpleJSONUtility {
 

@@ -1,4 +1,4 @@
-package com.vtiger.com.generic.WebdriverUtility;
+package com.vtiger.crm.genericWebDriverUtility;
 
 import java.io.File;
 import java.io.IOException;

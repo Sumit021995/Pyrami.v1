@@ -1,4 +1,4 @@
-package com.vtiger.com.generic.excelUtility;
+package com.vtiger.crm.genericExcelUtility;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,14 +14,16 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import genericUtility.IPathUtility;
+import com.vtiger.crm.genericIPathUtility.IPathUtility;
+
+
 
 public class ExcelUtility {
 
 	public String getDataFromExcelFile(String sheetName, int rowNum, int cellNum)
 			throws EncryptedDocumentException, IOException {
 		String value = "";
-		FileInputStream file = new FileInputStream(IPathUtility .excelFile);
+		FileInputStream file = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(file);
 		try {
 			value = wb.getSheet(sheetName).getRow(rowNum).getCell(cellNum).toString();
