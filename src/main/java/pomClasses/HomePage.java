@@ -12,12 +12,23 @@ public class HomePage {
 	@FindBy(xpath="//table[@class='hdrTabBg']//a[text()='Contacts']") private WebElement contactsLink;
 	@FindBy(xpath="//table[@class='hdrTabBg']//a[text()='Organizations']") private WebElement organizationsLink;
 	@FindBy(xpath="//table[@class='hdrTabBg']//a[text()='Products']") private WebElement productsLink;
+	@FindBy(xpath="//img[@src='themes/softed/images/user.PNG']") private WebElement accountIcon;
 	@FindBy(id="qccombo") private WebElement quickCreateDropdown;
 	@FindBy(xpath="//a[@name='Campaigns']") private WebElement campaignsLink;
 	@FindBy(linkText="More") private WebElement moreOptionLink;
+	@FindBy(linkText="Sign Out") private WebElement signOutLink;
 	
 	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
+	}
+	
+	public WebElement getSignOutLink() {
+		return signOutLink;
+	}
+
+
+	public WebElement getAccountIcon() {
+		return accountIcon;
 	}
 
 	public WebElement getCampaignsLink() {
@@ -55,5 +66,11 @@ public class HomePage {
 	{
 		Select s = new Select(quickCreateDropdown);
 		s.selectByValue(valueOfQuickCreateDropdown);
+	}
+	public void logoutFromApplication(WebDriver driver)
+	{
+		Actions act = new Actions(driver);
+		act.moveToElement(accountIcon).perform();
+		
 	}
 }
