@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import com.vtiger.crm.genericIPathUtility.IPathUtility;
 
 
-
 public class JsonReader {
 	public static void main(String[] args) throws IOException {
 		String data = new String(Files.readAllBytes(Paths.get(IPathUtility.jsonFilePath)));

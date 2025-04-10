@@ -3,6 +3,7 @@ package com.crm.leads_Test;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -23,9 +24,9 @@ import com.vtiger.crm.genericIPathUtility.IPathUtility;
 
 
 
-public class Test_Leads_003 {
+public class Test_Leads_005 {
 	@Test
-	public  void leads_003() throws Exception{
+	public  void leads_005() throws Exception{
 		
 		Select s;
 		WebDriver driver=null;
@@ -65,48 +66,60 @@ public class Test_Leads_003 {
 		//================== Fetch Data from Excel File ========================//
 		FileInputStream excelFile = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(excelFile);
-		Row row = wb.getSheet("Leads").getRow(8);
-		String firstName3 = row.getCell(1).toString();
-		String lastName3= row.getCell(2).toString();
-		String company3 = row.getCell(3).toString()+Math.floor(Math.random()*1000);
-		String phone3 = (long)row.getCell(4).getNumericCellValue()+"";
-		String website3 = row.getCell(5).toString();
-		String employee3 = (int)row.getCell(6).getNumericCellValue()+"";
-		String country3 = row.getCell(7).toString();
-		String city3 = row.getCell(8).toString();
-		String state3 = row.getCell(9).toString();
+		Row row = wb.getSheet("Leads").getRow(14);
+		String firstName5 = row.getCell(1).toString();
+		String lastName5= row.getCell(2).toString();
+		String company5 = row.getCell(3).toString()+Math.floor(Math.random()*1000);
+		String phone5 = (long)row.getCell(4).getNumericCellValue()+"";
+		String website5 = row.getCell(5).toString();
+		String employee5 = (int)row.getCell(6).getNumericCellValue()+"";
+		String country5 = row.getCell(7).toString();
+		String city5 = row.getCell(8).toString();
+		String state5 = row.getCell(9).toString();
+		String leadSource5 = row.getCell(10).toString();
+		String industry5 = row.getCell(11).toString();
+		String leadStatus5 = row.getCell(12).toString().trim();
+		String rating5 = row.getCell(13).toString();
 		
 		WebElement titleDropdown = driver.findElement(By.name("salutationtype"));
 		new Select(titleDropdown).selectByIndex(1);
-		driver.findElement(By.name("firstname")).sendKeys(firstName3,Keys.TAB,Keys.TAB,lastName3,Keys.TAB,phone3,Keys.TAB,company3);
-		driver.findElement(By.name("website")).sendKeys(website3);
-		driver.findElement(By.id("noofemployees")).sendKeys(employee3);
-		driver.findElement(By.id("city")).sendKeys(city3,Keys.TAB,country3,Keys.TAB,state3);
+		driver.findElement(By.name("firstname")).sendKeys(firstName5,Keys.TAB,Keys.TAB,lastName5,Keys.TAB,phone5,Keys.TAB,company5);
+		driver.findElement(By.name("website")).sendKeys(website5);
+		driver.findElement(By.id("noofemployees")).sendKeys(employee5);
+		driver.findElement(By.id("city")).sendKeys(city5,Keys.TAB,country5,Keys.TAB,state5);
 		
-		/*
-		 * //================== Use of Select class for Dropdown handling
-		 * ========================// WebElement industryDropdownEle =
-		 * driver.findElement(By.name("industry")); s = new Select(industryDropdownEle);
-		 * s.selectByValue(industry3); WebElement typeDropdownEle =
-		 * driver.findElement(By.name("accounttype")); s = new Select(typeDropdownEle);
-		 * s.selectByValue(type3); WebElement ratingDropdownEle =
-		 * driver.findElement(By.name("rating")); s = new Select(ratingDropdownEle);
-		 * s.selectByValue(rating3);
-		 * 
-		 * //================== New Window handling ========================// String
-		 * parentWindowId = driver.getWindowHandle();
-		 * driver.findElement(By.xpath("//img[@title='Select']")).click(); Set<String>
-		 * allWindowIds = driver.getWindowHandles();
-		 * 
-		 * for(String id:allWindowIds) { if(!id.equals(parentWindowId)) {
-		 * driver.switchTo().window(id); break; } }
-		 * 
-		 * driver.findElement(By.id("search_txt")).sendKeys(memberOf);
-		 * driver.findElement(By.name("search")).click();
-		 * driver.findElement(By.id("1")).click(); driver.switchTo().alert().accept();
-		 * 
-		 * driver.switchTo().window(parentWindowId);
-		 */
+		
+		//================== Use of Select class for Dropdown handling ========================// 
+		WebElement industryDropdownEle = driver.findElement(By.name("industry")); 
+		s = new Select(industryDropdownEle);
+		s.selectByValue(industry5); 
+		WebElement leadsourceDropdownEle = driver.findElement(By.name("leadsource")); 
+		s = new Select(leadsourceDropdownEle);
+		s.selectByValue(leadSource5); 
+		WebElement ratingDropdownEle = driver.findElement(By.name("rating")); 
+		s = new Select(ratingDropdownEle);
+		s.selectByValue(rating5);
+		WebElement leadStatusDropdownEle = driver.findElement(By.name("leadstatus")); 
+		s = new Select(leadStatusDropdownEle);
+		s.selectByValue(leadStatus5);
+		  
+//		//================== New Window handling ========================// 
+//		  String parentWindowId = driver.getWindowHandle();
+//		  driver.findElement(By.xpath("//img[@title='Select']")).click(); 
+//		  Set<String> allWindowIds = driver.getWindowHandles();
+//		  
+//		  for(String id:allWindowIds) { 
+//			  if(!id.equals(parentWindowId)) {
+//				  driver.switchTo().window(id); break; 
+//				  } 
+//			  }
+//		  
+//		  driver.findElement(By.id("search_txt")).sendKeys(memberOf);
+//		  driver.findElement(By.name("search")).click();
+//		  driver.findElement(By.id("1")).click(); driver.switchTo().alert().accept();
+//		  
+//		  driver.switchTo().window(parentWindowId);
+		 
 		
 		
 		driver.findElement(By.name("button")).click();
@@ -123,36 +136,34 @@ public class Test_Leads_003 {
 		String cityComfirmationText = driver.findElement(By.id("dtlview_City")).getText();
 		String stateComfirmationText = driver.findElement(By.id("dtlview_State")).getText();
 		String employeeComfirmationText = driver.findElement(By.id("dtlview_No Of Employees")).getText();
-		/*
-		 * String leadSourceComfirmationText =
-		 * driver.findElement(By.id("dtlview_Lead Source")).getText(); String
-		 * industryComfirmationText =
-		 * driver.findElement(By.id("dtlview_Industry")).getText(); 
-		 * String emailComfirmationText =
-		 * driver.findElement(By.id("dtlview_Email")).getText(); String
-		 * leadStatusComfirmationText =
-		 * driver.findElement(By.id("dtlview_Lead Status")).getText(); String
-		 * ratingComfirmationText =
-		 * driver.findElement(By.id("dtlview_Rating")).getText(); 
-		 */
+		String leadSourceComfirmationText = driver.findElement(By.id("dtlview_Lead Source")).getText(); 
+		String industryComfirmationText = driver.findElement(By.id("dtlview_Industry")).getText(); 
+//		String emailComfirmationText = driver.findElement(By.id("dtlview_Email")).getText();
+		String leadStatusComfirmationText = driver.findElement(By.id("dtlview_Lead Status")).getText(); 
+		String ratingComfirmationText = driver.findElement(By.id("dtlview_Rating")).getText(); 
+		 
 		
-		Assert.assertTrue(comfirmationText.contains(firstName3));
-		Assert.assertTrue(comfirmationText.contains(lastName3));
-		Assert.assertTrue(firstNameComfirmationText.equals(firstName3));
-		Assert.assertTrue(lastNameComfirmationText.equals(lastName3));
+		Assert.assertTrue(comfirmationText.contains(firstName5));
+		Assert.assertTrue(comfirmationText.contains(lastName5));
+		Assert.assertTrue(firstNameComfirmationText.equals(firstName5));
+		Assert.assertTrue(lastNameComfirmationText.equals(lastName5));
 		Assert.assertTrue(titleComfirmationText.contains("Mr."));
-		Assert.assertTrue(companyComfirmationText.equals(company3));
-		Assert.assertTrue(phoneComfirmationText.equals(phone3));
-		if(website3.contains("http://") || website3.contains("https://"))
-			Assert.assertTrue(websiteComfirmationText.equals(website3));
+		Assert.assertTrue(companyComfirmationText.equals(company5));
+		Assert.assertTrue(phoneComfirmationText.equals(phone5));
+		if(website5.contains("http://") || website5.contains("https://"))
+			Assert.assertTrue(websiteComfirmationText.equals(website5));
 		else
-			Assert.assertTrue(websiteComfirmationText.equals("http://"+website3));
+			Assert.assertTrue(websiteComfirmationText.equals("http://"+website5));
 		
-		Assert.assertTrue(phoneComfirmationText.equals(phone3));
-		Assert.assertTrue(employeeComfirmationText.equals(employee3));
-		Assert.assertTrue(cityComfirmationText.equals(city3));
-		Assert.assertTrue(countryComfirmationText.equals(country3));
-		Assert.assertTrue(stateComfirmationText.equals(state3));
+		Assert.assertTrue(phoneComfirmationText.equals(phone5));
+		Assert.assertTrue(employeeComfirmationText.equals(employee5));
+		Assert.assertTrue(cityComfirmationText.equals(city5));
+		Assert.assertTrue(countryComfirmationText.equals(country5));
+		Assert.assertTrue(stateComfirmationText.equals(state5));
+		Assert.assertTrue(leadSourceComfirmationText.equals(leadSource5));
+		Assert.assertTrue(industryComfirmationText.equals(industry5));
+		Assert.assertTrue(leadStatusComfirmationText.equals(leadStatus5));
+		Assert.assertTrue(ratingComfirmationText.equals(rating5));
 		System.out.println("All Leads details Validated True");
 		
 		//================== Logout From The Application with the help of Actions class ========================//
