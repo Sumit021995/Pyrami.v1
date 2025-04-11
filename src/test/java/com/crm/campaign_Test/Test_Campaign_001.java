@@ -11,6 +11,8 @@ public class Test_Campaign_001 extends BaseClass_Test{
 	public void campaign_001()
 	{
 		
-		HomePage homePage = new HomePage(driver);
+		new HomePage(driver).getCampaignsLink().click();
+		
+		new CreateCampaignPage().
 	}
 }
