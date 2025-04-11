@@ -13,6 +13,6 @@ public class Test_Campaign_001 extends BaseClass_Test{
 		
 		new HomePage(driver).getCampaignsLink().click();
 		
-		new CreateCampaignPage().
+		
 	}
 }
