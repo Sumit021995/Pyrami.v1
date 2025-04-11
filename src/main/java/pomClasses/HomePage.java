@@ -71,6 +71,7 @@ public class HomePage {
 	{
 		Actions act = new Actions(driver);
 		act.moveToElement(accountIcon).perform();
+		signOutLink.click();
 		
 	}
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="5" parallel="classes" >
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.crm.leads_Test.Test_Leads_004"/>
+      <class name="com.crm.contact_Test.Test_Contacts_005"/>
+      <class name="com.crm.contact_Test.Test_Contacts_003"/>
+      <class name="com.crm.contact_Test.Test_Contacts_004"/>
+      <class name="com.crm.contact_Test.Test_Contacts_001"/>
+      <class name="com.crm.contact_Test.Test_Contacts_002"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

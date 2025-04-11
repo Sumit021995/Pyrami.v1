@@ -32,6 +32,7 @@ public class ExcelUtility {
 
 		}
 //		String value = wb.getSheet(sheetName).getRow(rowNum).getCell(cellNum).toString();
+		wb.close();
 		return value;
 
 	}
@@ -56,7 +57,7 @@ public class ExcelUtility {
 			}
 			multipleData.add(value);
 		}
-
+		wb.close();
 		return multipleData;
 	}
 
@@ -74,7 +75,7 @@ public class ExcelUtility {
 				excelDataList.add(data);
 			}
 		}
-
+		wb.close();
 		return excelDataList;
 	}
 
@@ -92,6 +93,7 @@ public class ExcelUtility {
 			String data = stringFormatExcelData.formatCellValue(cell);
 			excelDataList.add(data);
 		}
+		wb.close();
 		return excelDataList;
 	}
 
@@ -106,6 +108,7 @@ public class ExcelUtility {
 			String data = stringFormatExcelData.formatCellValue(cell);
 			excelDataList.add(data);
 		}
+		wb.close();
 		return excelDataList;
 	}
 
@@ -124,7 +127,10 @@ public class ExcelUtility {
 	{
 		FileInputStream file = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(file);
-		return wb.getSheet(sheetName).getLastRowNum();
+		int rownum=wb.getSheet(sheetName).getLastRowNum();
+		wb.close();
+		return rownum;
+		
 	}
 	public static void main(String[] args) throws Exception {
 		ExcelUtility excelUtility = new ExcelUtility();

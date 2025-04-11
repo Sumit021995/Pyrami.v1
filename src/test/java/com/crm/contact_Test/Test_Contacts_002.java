@@ -62,7 +62,7 @@ public class Test_Contacts_002 {
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
 				
 		//================== Fetch Data from Excel File ========================//
-		FileInputStream excelFile = new FileInputStream(".\\src\\test\\resources\\TestData\\TestExcel.xlsx");
+		FileInputStream excelFile = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(excelFile);
 		String orgName1 = wb.getSheet("Organizations").getRow(2).getCell(1).toString()+Math.floor(Math.random()*1000);
 		String orgWebsite1 = wb.getSheet("Organizations").getRow(2).getCell(2).toString();
@@ -140,7 +140,7 @@ public class Test_Contacts_002 {
 		
 		String orgNameConfirmationText = driver.findElement(By.id("mouseArea_Organization Name")).getText().trim();
 
-		System.out.println(orgNameConfirmationText);
+//		System.out.println(orgNameConfirmationText);
 //		String leadSourceDropdownConfirmationTest = driver.findElement(By.id("mouseArea_First Name")).getText();
 //		String industryConfirmationText = driver.findElement(By.id("dtlview_Industry")).getText();
 //		String typeConfirmationText = driver.findElement(By.id("dtlview_Type")).getText();
@@ -156,7 +156,7 @@ public class Test_Contacts_002 {
 //		Assert.assertEquals(typeConfirmationText.contains(type3), true);
 //		Assert.assertEquals(ratingConfirmationText.contains(rating3), true);
 //		Assert.assertTrue(memberOfConfirmationText.contains(memberOf));
-		System.out.println("All Organization details Validated True");
+		System.out.println("All details Validated True");
 		
 		//================== Logout From The Application with the help of Actions class ========================//
 		Actions act = new Actions(driver);

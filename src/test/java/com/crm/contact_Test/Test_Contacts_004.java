@@ -61,7 +61,7 @@ public class Test_Contacts_004 {
 		driver.findElement(By.xpath("//img[@title='Create Contact...']")).click();
 		
 		//================== Fetch Data from Excel File ========================//
-		FileInputStream excelFile = new FileInputStream(".\\src\\test\\resources\\TestData\\TestExcel.xlsx");
+		FileInputStream excelFile = new FileInputStream(IPathUtility.excelFile);
 		Workbook wb = WorkbookFactory.create(excelFile);
 		String contactFirstName4 = wb.getSheet("Contacts").getRow(11).getCell(1).toString();
 		String contactLastName4 = wb.getSheet("Contacts").getRow(11).getCell(2).toString();
@@ -123,7 +123,7 @@ public class Test_Contacts_004 {
 //		Assert.assertEquals(typeConfirmationText.contains(type4), true);
 //		Assert.assertEquals(ratingConfirmationText.contains(rating4), true);
 //		Assert.assertTrue(memberOfConfirmationText.contains(memberOf));
-		System.out.println("All Organization details Validated True");
+		System.out.println("All details Validated True");
 		
 		//================== Logout From The Application with the help of Actions class ========================//
 		Actions act = new Actions(driver);
