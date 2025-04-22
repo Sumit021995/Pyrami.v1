@@ -3,7 +3,7 @@ package samplePracticePackage;
 import java.util.Random;
 
 public class RandomStringGeneration {
-	public StringBuilder getRandomString(int stringLength)
+	public String getRandomString(int stringLength)
 	{
 //		String randomString="";
 		StringBuilder sb = new StringBuilder(stringLength);
@@ -13,9 +13,9 @@ public class RandomStringGeneration {
 			int randomNumber = new Random().nextInt(alfabets.length());
 			sb.append(alfabets.charAt(randomNumber));
 		}
-		return sb;
+		return sb.toString();
 	}
-	public StringBuilder getRandomAlfaNumericString(int stringLength)
+	public String getRandomAlfaNumericString(int stringLength)
 	{
 		StringBuilder sb = new StringBuilder(stringLength);
 //		String randomString="";
@@ -25,12 +25,12 @@ public class RandomStringGeneration {
 			int randomNumber = new Random().nextInt(alfabets.length());
 			sb.append(alfabets.charAt(randomNumber));
 		}
-		return sb;
+		return sb.toString();
 	}
 	public static void main(String[] args) {
-		StringBuilder randomString = new RandomStringGeneration().getRandomString(12);
+		String randomString = new RandomStringGeneration().getRandomString(12);
 		System.out.println(randomString);
-		StringBuilder randomAlfaNumericString = new RandomStringGeneration().getRandomAlfaNumericString(100);
+		String randomAlfaNumericString = new RandomStringGeneration().getRandomAlfaNumericString(100);
 		System.out.println(randomAlfaNumericString);
 	}
 }

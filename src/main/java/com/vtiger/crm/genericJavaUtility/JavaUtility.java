@@ -4,11 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
-
 /**
  * This is utility class which contains java related generic methods
  */
 public class JavaUtility {
+	Calendar cal;
 	/**
 	 * This is a generic method to generate random number
 	 * @param bound
@@ -27,7 +27,7 @@ public class JavaUtility {
 	 */
 	public String  getCalanderDetails(String format)
 	{
-		Calendar cal = Calendar.getInstance();
+		cal = Calendar.getInstance();
 		Date d = cal.getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		String data = sdf.format(d);
@@ -40,9 +40,9 @@ public class JavaUtility {
 	 * @param extraDay
 	 * @return
 	 */
-	public String  getCalanderDetails(String format,int extraDay)
+	public String  getCalanderDetailsBasedOnFormat(String format,int extraDay)
 	{
-		Calendar cal = Calendar.getInstance();
+		cal = Calendar.getInstance();
 		cal.add(Calendar.DAY_OF_MONTH, extraDay);
 		Date d = cal.getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -92,5 +92,21 @@ public class JavaUtility {
 			sb.append(alfabets.charAt(randomNumber));
 		}
 		return sb.toString();
+	}
+	public String getFixedDate(String dateFormat,int year,int month,int day)
+	{
+		Calendar newCal = Calendar.getInstance();
+		if(month>=1 && month<=12 && day>=1 && day<=31)
+		{
+			
+		}
+		newCal.set(year,month-1, day);
+        Date fixedDate = newCal.getTime();
+
+        // Format
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        String formattedDate = sdf.format(fixedDate);
+        return formattedDate;
+
 	}
 }

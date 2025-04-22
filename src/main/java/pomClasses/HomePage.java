@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.vtiger.crm.genericWebDriverUtility.WebDriverUtility;
+
 public class HomePage {
 	@FindBy(xpath="//table[@class='hdrTabBg']//a[text()='Leads']") private WebElement leadsLink;
 	@FindBy(xpath="//table[@class='hdrTabBg']//a[text()='Contacts']") private WebElement contactsLink;
@@ -67,11 +69,20 @@ public class HomePage {
 		Select s = new Select(quickCreateDropdown);
 		s.selectByValue(valueOfQuickCreateDropdown);
 	}
+	
 	public void logoutFromApplication(WebDriver driver)
 	{
+		WebDriverUtility wdUtil = new WebDriverUtility();
+		wdUtil.waitForElementToBeVisible(driver, 10,accountIcon);
 		Actions act = new Actions(driver);
 		act.moveToElement(accountIcon).perform();
 		signOutLink.click();
 		
+	}
+	public void clickOnCampaignLink(WebDriver driver)
+	{
+		Actions act = new Actions(driver);
+				act.moveToElement(moreOptionLink).perform();
+		campaignsLink.click();
 	}
 }

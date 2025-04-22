@@ -12,7 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * This is an Utility class which contains generic methods for selenium library
@@ -21,6 +23,7 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class WebDriverUtility {
 	
+	WebDriverWait wait;
 	/**
 	 * This is the generic method to open an application
 	 * @param driver
@@ -37,6 +40,20 @@ public class WebDriverUtility {
 	public void maximizeWindow(WebDriver driver)
 	{
 		driver.manage().window().maximize();
+	}
+	
+	
+	////////////******Handling Synchronization*******/////////////
+	/**
+	 * 
+	 * @param driver
+	 * @param maxTimeInSec
+	 * @param webEle
+	 */
+	public void waitForElementToBeVisible(WebDriver driver,int maxTimeInSec,WebElement webEle)
+	{
+		wait = new WebDriverWait(driver,Duration.ofSeconds(maxTimeInSec));
+		wait.until(ExpectedConditions.visibilityOf(webEle));
 	}
 	/**
 	 * This is the generic method to apply implicit wait to the script

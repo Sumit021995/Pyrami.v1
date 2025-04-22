@@ -3,11 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.crm.leads_Test.Test_Leads_005">
+      <class name="com.crm.campaign_Test.Test_Campaign_001">
         <methods>
-          <include name="leads_005"/>
+          <include name="closeDatabaseConnection"/>
+          <include name="logoutFromApplication"/>
+          <include name="login"/>
+          <include name="campaign_001"/>
+          <include name="connectToDatabase"/>
+          <include name="closeBrowser"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.crm.leads_Test.Test_Leads_005 -->
+      </class> <!-- com.crm.campaign_Test.Test_Campaign_001 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
